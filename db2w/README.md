@@ -119,7 +119,7 @@ IBM Cloud File Storage (`ibmc-file-gold-gid` storage class) & Portworx:
 # OCP (web) Console Installation
 ## Pre-requisits to install CP4D Operator
 - Suggested: operational OpenShift Storage Cluster with standard OSC storage classes. (to be used for all MAS installation tasks)
-
+### IBM entitlement key
 1) Create Project --> myCloudPakOperator (example: CP4D)
 2) create secrete within the project for IBM entitlement key
 
@@ -132,6 +132,32 @@ Registry Server Address = `cp.icr.io`
 Username = `cp`
 
 Password = "your downloaded IBM entitlement key"
+
+
+### Prepare dedicated node for DB2WH
+DB2WH requires a dedicated Node for installation and special considerations are required in combination with Openshift Cluster Storage. 
+
+As a solution a node can be tainted , drained and labled for DB2WH to be picked up in later installation steps. 
+
+Execute the following steps as kubeadmin with the OC CLI:
+
+- tainting nodes for DB2 (oc get nodes - select the node of choice- this example uses the node = `ip-10-0-202-136.ap-southeast-1.compute.internal`)
+
+```oc adm taint node ip-10-0-202-136.ap-southeast-1.compute.internal icp4data=database-db2wh:NoSchedule --overwrite```
+
+- drain the node
+
+```oc adm drain ip-10-0-202-136.ap-southeast-1.compute.internal```
+
+```oc adm uncordon ip-10-0-202-136.ap-southeast-1.compute.internal```
+
+- label the node
+
+```oc label node ip-10-0-202-136.ap-southeast-1.compute.internal icp4data=database-db2wh --overwrite```
+
+
+
+
 
 ## CP4D operator installation
 - Operators - Operator Hub --> search "Cloud Pak for Data" and install latest version
