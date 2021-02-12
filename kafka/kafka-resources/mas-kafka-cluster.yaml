@@ -5,6 +5,8 @@ metadata:
 spec:
   kafka:
     version: 2.4.0
+    authorization:
+      type: simple
     resources:
       requests:
         memory: 4Gi
@@ -17,8 +19,6 @@ spec:
       -Xmx: 3072m
     replicas: 3
     listeners:      
-      authorization:
-        type: simple
       plain:
         authentication:
           type: scram-sha-512
