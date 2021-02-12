@@ -77,7 +77,7 @@ The following DB2 Warehouse version releases are supported:
 Use the [online tool](https://www.ibm.com/links?url=http%3A%2F%2Fdashdb-configurator.stage1.mybluemix.net%2F) to calculate the cluster resource requirements
 
 
-## 4. Installation
+# 4. OCP terminal Installation
 
 ??? abstract "Prerequisite Actions"
     - [Install CloudPak for Data](../cp4d/README.md)
@@ -114,3 +114,75 @@ IBM Cloud File Storage (`ibmc-file-gold-gid` storage class) & Portworx:
 
 - System and backup storage: `portworx-db2-rwx-sc` (select 4K sector size)
 - User storage: `portworx-db2-rwo-sc` (select 4K sector size and ReadWriteOnce)
+
+----------
+# OCP (web) Console Installation
+## Pre-requisits to install CP4D Operator
+- Suggested: operational OpenShift Storage Cluster with standard OSC storage classes. (to be used for all MAS installation tasks)
+
+1) Create Project --> myCloudPakOperator (example: CP4D)
+2) create secrete within the project for IBM entitlement key
+
+Type = Pull Secret
+
+Secret Name = `ibm-entitlement-key`
+
+Registry Server Address = `cp.icr.io`
+
+Username = `cp`
+
+Password = "your downloaded IBM entitlement key"
+
+## CP4D operator installation
+- Operators - Operator Hub --> search "Cloud Pak for Data" and install latest version
+- Install operator in the namespace created under earlier steps (example: CP4D)
+- Wait for Operator to be successfully installed
+
+### DB2WH installation
+- Operators - Installed Operators --> select namespace of earlier project (example: CP4D) and navigate to the installed operator
+
+- Create new `cloud pak for data service`
+
+-- accept licence
+
+-- Service name (assembly) = `db2wh`
+
+-- provide storage class = suggested: `ocs-storagecluster-cephfs`
+
+### Optional: Install Data Management Console
+- Operators - Installed Operators --> select namespace of earlier project (example: CP4D) and navigate to the installed operator
+
+- Create new `cloud pak for data service` 
+
+-- accept licence
+
+-- Service name (assembly) = `dmc`
+
+-- provide storage class = suggested: `ocs-storagecluster-cephfs`
+
+## Post-installation steps
+
+
+### DB2WH - prepare for Monitor optimzed data
+Follow the instructions from IBM knowledgecenter to change the DB2WH to row-organized tables by editing a configuration Json file on the DB2WH pod. 
+
+1) Workloads - Pods --> Search for a pod `zen-database-core`
+2) Navigate to pod details - Terminal
+3) Execute the following command witin the interactive bash terminal of the pod
+
+``` 
+jf=$(ls -1 /user-home/_global_/databases/ibm-db2wh-*-x86_64.json)
+python <<EOF
+import json
+jf = '$jf'
+
+with open(jf, 'r') as fd:
+    parsed = json.load(fd)
+
+parsed["create"]["table-org"]="ROW"
+
+with open(jf, 'w') as fd:
+    json.dump(parsed, fd, indent=2)
+EOF
+```
+
