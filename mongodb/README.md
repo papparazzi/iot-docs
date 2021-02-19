@@ -46,6 +46,13 @@ MongoDB Community Edition is fully supported by Maximo Application Suite, the fo
 
 !!! example "Creating a route to the internal image registry on IBM Cloud"
     See this [example](https://cloud.ibm.com/docs/openshift?topic=openshift-registry#route_internal_registry) for creating a route to the internal image registry on OpenShift in IBM Cloud.
+    
+### 3.0.1 Patching OCP 4.6 image-registry for external route
+https://docs.openshift.com/container-platform/4.6/registry/configuring-registry-operator.html
+
+```oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'```
+
+
 
 ### 3.1 Build the MongoDB Community Edition docker image
 
