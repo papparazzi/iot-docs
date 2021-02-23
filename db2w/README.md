@@ -126,13 +126,21 @@ The CP4D operator needs to be registered with OCP in order to appear under Opera
 Navigate to Adminstration - Cluster Setting - Global Configuration - Operator Hub and press create catalog source with the following details as cluster wide ressource
 
 Catalog source name
+
 '''ibm-cp-data-operator-catalog'''
+
 Display name
+
 '''Cloud Pak for Data'''
+
 Publisher name
+
 '''IBM'''
+
 Image (URL of container image)
+
 '''docker.io/ibmcom/ibm-cp-data-operator-catalog:latest'''
+
 
 
 
