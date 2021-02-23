@@ -127,19 +127,19 @@ Navigate to Adminstration - Cluster Setting - Global Configuration - Operator Hu
 
 Catalog source name
 
-'''ibm-cp-data-operator-catalog'''
+`ibm-cp-data-operator-catalog`
 
 Display name
 
-'''Cloud Pak for Data'''
+`Cloud Pak for Data`
 
 Publisher name
 
-'''IBM'''
+`IBM`
 
 Image (URL of container image)
 
-'''docker.io/ibmcom/ibm-cp-data-operator-catalog:latest'''
+`docker.io/ibmcom/ibm-cp-data-operator-catalog:latest`
 
 
 
