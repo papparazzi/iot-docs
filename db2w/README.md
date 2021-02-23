@@ -145,8 +145,13 @@ Image (URL of container image)
 
 
 ### IBM entitlement key
-1) Create Project --> myCloudPakOperator (example: CP4D)
-2) create secrete within the project for IBM entitlement key
+
+0) Navigate to installed operators , search for Cloud Pak and install in standard namespace `cpd-meta-ops`
+1) Create Project holding the DB2 installed in later steps --> myDBS (example: CP4D)
+2) create secrete within this project for `IBM entitlement key`
+3) repeat the secrete creation for the earlier created Cloud pak operator project `cpd-meta-ops`
+
+Secrete details - please add your IBM pull secret under the password. 
 
 Type = Pull Secret
 
