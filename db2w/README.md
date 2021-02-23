@@ -119,6 +119,22 @@ IBM Cloud File Storage (`ibmc-file-gold-gid` storage class) & Portworx:
 # OCP (web) Console Installation
 ## Pre-requisits to install CP4D Operator
 - Suggested: operational OpenShift Storage Cluster with standard OSC storage classes. (to be used for all MAS installation tasks)
+
+### Install IBM Cloud Pak for Data Operator
+The CP4D operator needs to be registered with OCP in order to appear under Operator Hub. 
+- Navigate to Adminstration - Cluster Setting - Global Configuration - Operator Hub and press create catalog source with the following details as cluster wide ressource.
+
+Catalog source name *
+'''ibm-cp-data-operator-catalog'''
+Display name
+'''Cloud Pak for Data'''
+Publisher name
+'''IBM'''
+Image (URL of container image) *
+'''docker.io/ibmcom/ibm-cp-data-operator-catalog:latest'''
+
+
+
 ### IBM entitlement key
 1) Create Project --> myCloudPakOperator (example: CP4D)
 2) create secrete within the project for IBM entitlement key
