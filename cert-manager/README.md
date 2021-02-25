@@ -15,7 +15,8 @@ openssl genrsa -out ca.key 2048
 
 ## Create a self signed Certificate, valid for 10yrs with the ‘signing’ option set
 The following command will generate self signed certs - please update the CN (common name) to reflect your cluster domain.
-Example of common name: `apps.cluster-5fba.sandbox274.opentlc.com`
+Example of common name: `export COMMON_NAME=apps.cluster-5fba.sandbox274.opentlc.com`
+
 ```
 openssl req -x509 -new -nodes -key ca.key -subj “/CN=${COMMON_NAME}” -days 3650 -reqexts v3_req -extensions v3_ca -out ca.crt
 ```
