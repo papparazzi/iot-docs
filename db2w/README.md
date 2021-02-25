@@ -146,23 +146,16 @@ DB2WH requires a dedicated Node for installation and special considerations are 
 As a solution a node can be tainted , drained and labled for DB2WH to be picked up in later installation steps. 
 
 Execute the following steps as kubeadmin with the OC CLI:
+`oc get nodes` - select a node and update the environment varible `NODE`:
 
-- tainting nodes for DB2 (oc get nodes - select the node of choice- this example uses the node = `ip-10-0-202-136.ap-southeast-1.compute.internal`)
+```
+export NODE=ip-10-0-143-147.ap-southeast-1.compute.internal
 
-```oc adm taint node ip-10-0-202-136.ap-southeast-1.compute.internal icp4data=database-db2wh:NoSchedule --overwrite```
-
-- drain the node
-
-```oc adm drain ip-10-0-202-136.ap-southeast-1.compute.internal```
-
-```oc adm uncordon ip-10-0-202-136.ap-southeast-1.compute.internal```
-
-- label the node
-
-```oc label node ip-10-0-202-136.ap-southeast-1.compute.internal icp4data=database-db2wh --overwrite```
-
-
-
+oc adm taint node $NODE icp4data=database-db2wh:NoSchedule --overwrite
+oc adm drain $NODE
+oc adm uncordon $NODE
+oc label node $NODE icp4data=database-db2wh --overwrite
+```
 
 
 ## CP4D operator installation
