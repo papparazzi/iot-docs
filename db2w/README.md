@@ -219,3 +219,9 @@ with open(jf, 'w') as fd:
 EOF
 ```
 
+### Login to the CP4D control plane
+Username = `admin`
+Password = `password`
+The link to the portal can be found under routes with the namespace of the DB2WH deployment (in this example CP4D). 
+
+Create 1 instance of DB2WH and 1 instance of DMC to get the DB deployed on the earlier prepared, labled and tainted node(s).
