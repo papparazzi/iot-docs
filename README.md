@@ -12,6 +12,14 @@ The installation process requires 3 main stages - dependencies , MAS control pla
 6. *Optional:* [Monitoring](monitoring/README.md)
 
 ## MAS control plan installation
+Execute the shell installer with relevant environment varaibles set. If the licence file has been created with a host_id already the following env variable *export LICENSING_ID=xxxxxxxxxx * could be used by inserting the hostID. 
+
+The example includes -c ca-issur which is the default namespace of the earlier installed [Cert-Manager](cert-manager/README.md)
+
+```
+export LICENSING_ID=0242ac110002
+./install.sh -i masinst1 --domain mas.com -c ca-issuer
+```
 
 
 ## Official documentation
