@@ -11,7 +11,7 @@ The installation process requires 3 main stages - dependencies , MAS control pla
 5. [Behaviour Analytics](analytics/README.md)
 6. *Optional:* [Monitoring](monitoring/README.md)
 
-## MAS control plan installation
+## MAS control plane installation
 Execute the shell installer with relevant environment varaibles set. 
 
 Locate and run the install.sh file.
@@ -37,6 +37,15 @@ export ENTITLEMENT_KEY=<your_key>
 ./install.sh -i masinst1 --domain apps.cluster-5fba.sandbox274.opentlc.com -c ca-issuer
 ```
 
+After the successful completion of the Maximo Application Suite installation, the following information is displayed:
+Administration dashboard URL
+Example: https://admin.masdomain.com
+Super user credentials
+Username and password in the form of two randomly generated 32-character strings.
+Important: Make a note of these credentials. If you lose them, they can be recovered only by an OpenShift administrator at:
+OpenShift dashboard > Projects > mas-instance_name-core > Workloads > Secrets > mas-superuser > Data
+Setup sign-in URL
+Example: https://admin.masdomain.com/initialsetup
 
 ## Official documentation
 1. [Maximo Application Suite documentation](https://www.ibm.com/support/knowledgecenter/SSQR84_current/iot/kc_welcome_mas.html)
