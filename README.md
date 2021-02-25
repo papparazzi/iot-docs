@@ -19,6 +19,7 @@ The install.sh file is part of the Maximo Application Suite V8.3 for Multiplatfo
 The following environment variables should be set before running the installer script:
 - export LICENSING_ID=<your existing licence HostID>
 - export ENTITLEMENT_KEY=<your_key>
+- export LICENSING_STORAGE_CLASS=<your prefered storage class>
 
 The MAS installer command:
 `./install.sh -i instance_name --domain masdomain.com -c masdev-cluster-issuer`
@@ -34,7 +35,8 @@ Where:
 ```
 export LICENSING_ID=0242ac110002
 export ENTITLEMENT_KEY=<your_key>
-./install.sh -i masinst1 --domain apps.cluster-5fba.sandbox274.opentlc.com -c ca-issuer
+export LICENSING_STORAGE_CLASS=ocs-storagecluster-cephfs
+./install.sh -i masinst1 --domain apps.cluster-5fba.sandbox274.opentlc.com -c ca-issuer --accept-license
 ```
 
 After the successful completion of the Maximo Application Suite installation, the following information is displayed:
@@ -49,6 +51,10 @@ OpenShift dashboard > Projects > mas-instance_name-core > Workloads > Secrets > 
 
 Setup sign-in URL
 Example: https://admin.masdomain.com/initialsetup
+
+## MAS admin portal - post installation
+Provide all required pre-req details for each application such as DB / mongo / kafka. See details under <tobeDone>
+
 
 ## Official documentation
 1. [Maximo Application Suite documentation](https://www.ibm.com/support/knowledgecenter/SSQR84_current/iot/kc_welcome_mas.html)
