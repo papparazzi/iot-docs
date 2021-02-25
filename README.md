@@ -24,9 +24,10 @@ The MAS installer command:
 `./install.sh -i instance_name --domain masdomain.com -c masdev-cluster-issuer`
 
 Where:
-*instance_name* is the OpenShift instance name that you want to use.
-*masdomain.com* is the domain name for your environment.
-*masdev-cluster-issuer* is the namespace of the [Cert-Manager](cert-manager/README.md)
+
+- instance_name is the OpenShift instance name that you want to use.
+- masdomain.com is the domain name for your environment.
+- masdev-cluster-issuer is the namespace of the [Cert-Manager](cert-manager/README.md)
 
 *Example:*
 
