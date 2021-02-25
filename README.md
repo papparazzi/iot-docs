@@ -8,7 +8,8 @@ The installation process requires 3 main stages - dependencies , MAS control pla
 2. [Db2 Warehouse](db2w/README.md)
 3. [MongoDB](mongodb/README.md)
 4. [Apache Kafka](kafka/README.md)
-5. *Optional:* [Monitoring](monitoring/README.md)
+5. [Behaviour Analytics](analytics/README.md)
+6. *Optional:* [Monitoring](monitoring/README.md)
 
 ## MAS control plan installation
 
