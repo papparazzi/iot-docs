@@ -30,6 +30,9 @@ kubectl create secret tls ca-key-pair \
   --namespace=cert-manager
 ```
 
+Note: The self signed certs will need to be transfered to the PC and stored under trusted CAs in order to complete the MAS installation in the post-installation process. Alternatively to generating new self signed certs the existing (self-signed) CA certs of the OCP cluster may be used. Ingress-Operator would hold the certificates under secrets. 
+
+
 ### create a custom ressource yaml spec to configure the cert-manager operator
 Use your favorit console editor (vi cert.yaml) to create a new custom ressource for the cert-manager to configure the usage of the earlier created secret for certificate issuance. 
 
