@@ -34,7 +34,7 @@ Use your favorit console editor (vi cert.yaml) to create a new custom ressource 
 
 The yaml should include the following:
 
-```
+```YAML
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
