@@ -103,7 +103,7 @@ oc login
 bash install.sh -k keyfile_secret -a admin_password -d true
 ```
 
-This script expects a OCP user with rights to push to the registry. In case kube:admin is used the script needs to be edited (vi) to change the docker login command to reflect `--tls-verify=false`. The docker login would look similar to : ` docker login -u $(oc whoami) -p $(oc whoami -t) --tls-verify=false $HOST`
+This script expects a OCP user with rights to push to the registry. In case kube:admin is used the script needs to be edited (vi) to change the docker login command to reflect `--tls-verify=false`. The docker login would look similar to : ` docker login -u $(oc whoami) -p $(oc whoami -t) --tls-verify=false $HOST` . more details may be found online: https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html
 
 Alternatively you can confgure the script using environment variables as below:
 
