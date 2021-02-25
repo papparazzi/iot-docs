@@ -81,6 +81,8 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: mongodbsc
 ```
+For the OCS storage the file system name would be ocs-storagecluster-cephfilesystem
+
 
 For IBM cloud a storage class is already provided: `ibmcloud/mongodbsc.yaml`
 
