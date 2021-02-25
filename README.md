@@ -38,12 +38,15 @@ export ENTITLEMENT_KEY=<your_key>
 ```
 
 After the successful completion of the Maximo Application Suite installation, the following information is displayed:
+
 Administration dashboard URL
 Example: https://admin.masdomain.com
+
 Super user credentials
 Username and password in the form of two randomly generated 32-character strings.
 Important: Make a note of these credentials. If you lose them, they can be recovered only by an OpenShift administrator at:
 OpenShift dashboard > Projects > mas-instance_name-core > Workloads > Secrets > mas-superuser > Data
+
 Setup sign-in URL
 Example: https://admin.masdomain.com/initialsetup
 
