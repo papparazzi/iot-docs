@@ -96,14 +96,8 @@ Installing automatically creates the `mongo` namespace and updates the Kubernete
 
 You will need to supply a keyfile secret which is used by Mongo internally to communicate with other replicaset nodes, while here we're only setting up a standlone Mongo it can be scaled to a larger cluster by setting the replicas to something other than 1. 
 
-To install, from the `installer` directory, run the following commands:
-
-```
-oc login
-bash install.sh -k keyfile_secret -a admin_password -d true
-```
-
-This script expects a OCP user with rights to push to the registry. In case kube:admin is used the script needs to be edited (vi) to change the docker login command to reflect `--tls-verify=false`. The docker login would look similar to : ` docker login -u $(oc whoami) -p $(oc whoami -t) --tls-verify=false $HOST` . more details may be found online: https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html
+This script expects a OCP user with rights to push to the registry. In case kube:admin is used the script needs to be edited (vi) to change the docker login command to reflect the `-u kubeadmin`. 
+Furthermore for OCP clusters without trusted certificates (= self sigend certs from the cloud provider IaaS) the install.sh script needs to adjust the docker login and the docker push commands to add  `--tls-verify=false` before the target domain name. Both is illustrated here: ` docker login -u kubeadmin -p $(oc whoami -t) --tls-verify=false $HOST` . More details may be found online: https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html
 
 Alternatively you can confgure the script using environment variables as below:
 
