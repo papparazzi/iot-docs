@@ -12,13 +12,28 @@ The installation process requires 3 main stages - dependencies , MAS control pla
 6. *Optional:* [Monitoring](monitoring/README.md)
 
 ## MAS control plan installation
-Execute the shell installer with relevant environment varaibles set. If the licence file has been created with a host_id already the following env variable *export LICENSING_ID=xxxxxxxxxx * could be used by inserting the hostID. 
+Execute the shell installer with relevant environment varaibles set. 
 
-The example includes -c ca-issur which is the default namespace of the earlier installed [Cert-Manager](cert-manager/README.md)
+Locate and run the install.sh file.
+The install.sh file is part of the Maximo Application Suite V8.3 for Multiplatform package that you downloaded from Passport Advantage.
+The following environment variables should be set before running the installer script:
+- export LICENSING_ID=<your existing licence HostID>
+- export ENTITLEMENT_KEY=<your_key>
+
+The MAS installer command:
+`./install.sh -i instance_name --domain masdomain.com -c masdev-cluster-issuer`
+
+Where:
+*instance_name* is the OpenShift instance name that you want to use.
+*masdomain.com* is the domain name for your environment.
+*masdev-cluster-issuer* is the namespace of the [Cert-Manager](cert-manager/README.md)
+
+*Example:*
 
 ```
 export LICENSING_ID=0242ac110002
-./install.sh -i masinst1 --domain mas.com -c ca-issuer
+export ENTITLEMENT_KEY=<your_key>
+./install.sh -i masinst1 --domain apps.cluster-5fba.sandbox274.opentlc.com -c ca-issuer
 ```
 
 
