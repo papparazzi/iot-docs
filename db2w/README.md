@@ -77,30 +77,6 @@ The following DB2 Warehouse version releases are supported:
 Use the [online tool](https://www.ibm.com/links?url=http%3A%2F%2Fdashdb-configurator.stage1.mybluemix.net%2F) to calculate the cluster resource requirements
 
 
-# 4. OCP terminal Installation
-
-??? abstract "Prerequisite Actions"
-    - [Install CloudPak for Data](../cp4d/README.md)
-
-- `oc login` to your OpenShift cluster
-- Go to the directory you placed the repo.yaml
-- Run the cpd adm command: `./cpd-linux adm -r repo.yaml -a db2wh -n zen --apply --verbose --accept-all-licenses`
-- Run the cpd install command: 
-
-```
-./cpd-linux -s repo.yaml \
-  -a db2wh \
-  -n zen \
-  -c <storage_class> \
-  --verbose \
-  --target-registry-username openshift \
-  --target-registry-password $(oc whoami -t) \
-  --insecure-skip-tls-verify \
-  --cluster-pull-prefix image-registry.openshift-image-registry.svc:5000/zen \
-  --transfer-image-to image-registry.openshift-image-registry.svc/zen
-```
-
-
 ## 5. Supported Storage
 
 System and backup storage, and user storage both require a storage class that supports the ReadWriteOnce access policy.
@@ -215,6 +191,7 @@ Execute the following steps as kubeadmin with the OC CLI:
 -- Service name (assembly) = `dmc`
 
 -- provide storage class = suggested: `ocs-storagecluster-cephfs`
+
 
 ## Post-installation steps
 
