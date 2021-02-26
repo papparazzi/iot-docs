@@ -1,3 +1,9 @@
+# Prep: OCP cluster trusted certs
+In cases whereby your cluster is using self sigend certificats the following steps may be taken in order to deploy let's encrypt certificates as trusted certs cluster wide. 
+
+https://www.openshift.com/blog/requesting-and-installing-lets-encrypt-certificates-for-openshift-4
+
+
 # Installation of Cert-Manager 
 
 Detailed alternative installation steps are documented online https://github.com/jetstack/cert-manager
